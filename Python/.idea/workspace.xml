@@ -27,8 +27,8 @@
       <file leaf-file-name="GardenDataServer.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/GardenDataServer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.29548088" vertical-offset="0" max-vertical-offset="863">
-              <caret line="15" column="17" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
+            <state vertical-scroll-proportion="0.37427577" vertical-offset="0" max-vertical-offset="863">
+              <caret line="19" column="15" selection-start-line="19" selection-start-column="15" selection-end-line="19" selection-end-column="15" />
               <folding>
                 <element signature="e#23#36#0" expanded="true" />
               </folding>
@@ -57,8 +57,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="180" />
-    <option name="y" value="25" />
+    <option name="x" value="665" />
+    <option name="y" value="159" />
     <option name="width" value="918" />
     <option name="height" value="1000" />
   </component>
@@ -257,7 +257,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="180" y="25" width="918" height="1000" extended-state="0" />
+    <frame x="665" y="159" width="918" height="1000" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -312,8 +312,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/GardenDataServer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.29548088" vertical-offset="0" max-vertical-offset="863">
-          <caret line="15" column="17" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
+        <state vertical-scroll-proportion="0.37427577" vertical-offset="0" max-vertical-offset="863">
+          <caret line="19" column="15" selection-start-line="19" selection-start-column="15" selection-end-line="19" selection-end-column="15" />
           <folding>
             <element signature="e#23#36#0" expanded="true" />
           </folding>

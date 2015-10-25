@@ -17,4 +17,5 @@ while True:
     state = int(ser.read(ser.inWaiting()))
     curs.execute("""INSERT INTO moisture
                  values(CURRENT_DATE() - INTERVAL 1 DAY, NOW(), state, moisture)""")
+    db.commit()
     time.sleep(60)

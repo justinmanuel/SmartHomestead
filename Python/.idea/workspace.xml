@@ -27,11 +27,21 @@
       <file leaf-file-name="GardenDataServer.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/GardenDataServer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.27578217" vertical-offset="0" max-vertical-offset="863">
-              <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
+            <state vertical-scroll-proportion="0.29548088" vertical-offset="0" max-vertical-offset="863">
+              <caret line="15" column="17" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
               <folding>
                 <element signature="e#23#36#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CommInterface.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CommInterface.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="221">
+              <caret line="7" column="36" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -41,13 +51,14 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/CommInterface.txt" />
         <option value="$PROJECT_DIR$/GardenDataServer.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="983" />
-    <option name="y" value="11" />
+    <option name="x" value="180" />
+    <option name="y" value="25" />
     <option name="width" value="918" />
     <option name="height" value="1000" />
   </component>
@@ -246,7 +257,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="983" y="11" width="918" height="1000" extended-state="0" />
+    <frame x="180" y="25" width="918" height="1000" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -291,10 +302,18 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/CommInterface.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="221">
+          <caret line="7" column="36" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/GardenDataServer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.27578217" vertical-offset="0" max-vertical-offset="863">
-          <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
+        <state vertical-scroll-proportion="0.29548088" vertical-offset="0" max-vertical-offset="863">
+          <caret line="15" column="17" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
           <folding>
             <element signature="e#23#36#0" expanded="true" />
           </folding>

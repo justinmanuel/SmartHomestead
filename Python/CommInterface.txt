@@ -1,0 +1,8 @@
+Modbus Register
+
+Index       R/W         Description
+-----------------------------------------------------------
+1           R           Moisture level 0-1023
+2           R           Solenoid state
+3           W           Solenoid ON
+4           W           Solenoid OFF

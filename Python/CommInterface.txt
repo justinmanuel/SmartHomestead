@@ -6,3 +6,4 @@ Index       R/W         Description
 2           R           Solenoid state
 3           W           Solenoid ON
 4           W           Solenoid OFF
+

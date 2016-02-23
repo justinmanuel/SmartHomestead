@@ -45,6 +45,7 @@ def collect_data():
             ser.write('\x01')
             time.sleep(2)
             moisture = ser.read(ser.inWaiting())
+            check_moisture(moisture)
             ser.write('\x02')
             time.sleep(2)
             state = ser.read(ser.inWaiting())
@@ -53,9 +54,16 @@ def collect_data():
                          + state + ", " + moisture + ")")
             db.commit()
             print datetime.datetime.now(), "Moisture: ", moisture, "    State:", state
-            time.sleep(60)
+            time.sleep(56)
         except Exception:
             print "There was an exception..."
+
+
+def check_moisture(moisture):
+    now = datetime.datetime.now()
+    if now.hour == 22 and now.minute == 5 and int(moisture) < 400:
+        ser.write('\x03')
+
 
 def end_cycle(state, running_count):
     if state == '1':

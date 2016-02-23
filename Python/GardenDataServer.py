@@ -53,13 +53,9 @@ def collect_data():
                          + state + ", " + moisture + ")")
             db.commit()
             print datetime.datetime.now(), "Moisture: ", moisture, "    State:", state
-            time.sleep(10)
+            time.sleep(60)
         except Exception:
             print "There was an exception..."
-            logging.exception("Oops:")
-            command = "/usr/bin/sudo /sbin/restart"
-            process = subprocess.Popen(command.split(), process.subprocess.PIPE)
-
 
 def end_cycle(state, running_count):
     if state == '1':
@@ -78,10 +74,9 @@ def end_cycle(state, running_count):
 print "Waiting 15 seconds to start collecting..."
 time.sleep(15)
 
-db = MySQLdb.connect("localhost", "root", "password", "moisture")
+db = MySQLdb.connect("localhost", "monitor", "password", "moisture")
 curs = db.cursor()
 ser = serial.Serial('/dev/ttyUSB0', 9600)
-logging.basicConfig(level=logging.DEBUG, filename='error.log')
 read_thread = threading.Thread(name='ReadThread', target=collect_data)
 read_thread.start()
 Handler = ServerHandler

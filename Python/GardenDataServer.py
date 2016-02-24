@@ -61,7 +61,7 @@ def collect_data():
 
 def check_moisture(moisture):
     now = datetime.datetime.now()
-    if now.hour == 22 and now.minute == 5 and int(moisture) < 400:
+    if now.hour == 7 and now.minute == 30 and int(moisture) < 320:
         ser.write('\x03')
 
 

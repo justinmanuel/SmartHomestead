@@ -1,5 +1,4 @@
 import serial
-import subprocess
 import MySQLdb
 import time
 import datetime
@@ -8,6 +7,7 @@ import SimpleHTTPServer
 import SocketServer
 import logging
 import cgi
+import httplib, urllib
 
 
 class ServerHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
@@ -40,6 +40,10 @@ class ServerHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
 
 def collect_data():
     running_count = 0
+    server = "data.sparkfun.com" # base URL of your feed
+    publicKey = "G2qxLpKZxGtwgdJXqz64" # public key, everyone can see this
+    privateKey = "NW4rxmvwrlhderowPnb7"  # private key, only you should know
+    fields = ["date", "time", "state", "moisture"] # Your feed's data fields
     while True:
         try:
             ser.write('\x01')
@@ -54,9 +58,32 @@ def collect_data():
                          + state + ", " + moisture + ")")
             db.commit()
             print datetime.datetime.now(), "Moisture: ", moisture, "    State:", state
+            data = {}
+            data[fields[0]] = time.strftime("%Y-%m-%d")
+            data[fields[1]] = time.strftime("%H:%M:%S")
+            data[fields[2]] = state
+            data[fields[3]] = moisture
+            params = urllib.urlencode(data)
+
+            # Now we need to set up our headers:
+            headers = {} # start with an empty set
+            # These are static, should be there every time:
+            headers["Content-Type"] = "application/x-www-form-urlencoded"
+            headers["Connection"] = "close"
+            headers["Content-Length"] = len(params) # length of data
+            headers["Phant-Private-Key"] = privateKey # private key header
+
+            # Now we initiate a connection, and post the data
+            c = httplib.HTTPConnection(server)
+            # Here's the magic, our reqeust format is POST, we want
+            # to send the data to data.sparkfun.com/input/PUBLIC_KEY.txt
+            # and include both our data (params) and headers
+            c.request("POST", "/input/" + publicKey + ".txt", params, headers)
+            r = c.getresponse() # Get the server's response and print it
             time.sleep(56)
-        except Exception:
+        except Exception as e:
             print "There was an exception..."
+            print e
 
 
 def check_moisture(moisture):

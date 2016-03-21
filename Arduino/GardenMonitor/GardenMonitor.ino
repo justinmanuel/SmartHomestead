@@ -1,14 +1,16 @@
 int index = 0;
 char frame[20];
 char prevByte;
-int relayPin = 8;
+int solenoidPin = 8;
+int LEDPin = 10;
 
 void sendMoisture();
 
 void setup() {
   // put your setup code here, to run once:
   Serial1.begin(9600);
-  pinMode(relayPin, OUTPUT);
+  pinMode(solenoidPin, OUTPUT);
+  pinMode(LEDPin, OUTPUT);
 }
 
 void loop() {
@@ -23,10 +25,17 @@ void loop() {
     }
     else if( inByte == 2 )
     {
-      byte state = digitalRead(relayPin);
+      byte state = digitalRead(solenoidPin);
       Serial1.print(state);
     }
-    else if ( inByte == 3) digitalWrite(relayPin, HIGH);
-    else if ( inByte == 4) digitalWrite(relayPin, LOW);
+    else if ( inByte == 3) digitalWrite(solenoidPin, HIGH);
+    else if ( inByte == 4) digitalWrite(solenoidPin, LOW);
+    else if ( inByte == 5)
+    {
+      byte state = digitalRead(LEDPin);
+      Serial1.print(state);
+    }
+    else if ( inByte == 6) digitalWrite(LEDPin, HIGH);
+    else if ( inByte == 7) digitalWrite(LEDPin, LOW);
   }
 }

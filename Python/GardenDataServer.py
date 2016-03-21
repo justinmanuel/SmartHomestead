@@ -24,7 +24,7 @@ class ServerHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
                      })
         command = form.getvalue("command")
         data = form.getvalue("data")
-        if command == "override":
+        if command == "irrigation":
                 if data == "on":
                         print "Turning water on"
                         ser.write('\x03')
@@ -33,6 +33,15 @@ class ServerHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
                         print "Turning water off"
                         ser.write('\x04')
                         time.sleep(2)
+        elif command == "lighting":
+                if data == "on":
+                        print "Turning lighting on"
+                        ser.write('\x06')
+                        time.sleep(2)
+                elif data == "off":
+                        print "Turning lighting off"
+                        ser.write('\x07')
+                        time.sleep(2)
         elif command == "report":
                 day = int(data)
         SimpleHTTPServer.SimpleHTTPRequestHandler.do_GET(self)
@@ -40,6 +49,9 @@ class ServerHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
 
 def collect_data():
     running_count = 0
+    max_cycle = 15
+    lighting_count = 0
+    max_lighting = 180
     server = "data.sparkfun.com" # base URL of your feed
     publicKey = "G2qxLpKZxGtwgdJXqz64" # public key, everyone can see this
     privateKey = "NW4rxmvwrlhderowPnb7"  # private key, only you should know
@@ -53,7 +65,11 @@ def collect_data():
             ser.write('\x02')
             time.sleep(2)
             state = ser.read(ser.inWaiting())
-            running_count = end_cycle(state, running_count)
+            running_count = end_cycle(state, running_count, max_cycle, device="irrigation")
+            ser.write('\x05')
+            time.sleep(2)
+            led = ser.read(ser.inWaiting())
+            lighting_count = end_cycle(led, lighting_count, max_lighting, device="lighting")
             curs.execute("INSERT INTO moisture values(CURRENT_DATE() - INTERVAL 1 DAY, NOW(), "
                          + state + ", " + moisture + ")")
             db.commit()
@@ -80,7 +96,7 @@ def collect_data():
             # and include both our data (params) and headers
             c.request("POST", "/input/" + publicKey + ".txt", params, headers)
             r = c.getresponse() # Get the server's response and print it
-            time.sleep(56)
+            time.sleep(54)
         except Exception as e:
             print "There was an exception..."
             print e
@@ -92,12 +108,15 @@ def check_moisture(moisture):
         ser.write('\x03')
 
 
-def end_cycle(state, running_count):
+def end_cycle(state, running_count, max_cycle, device=""):
     if state == '1':
         running_count += 1
         print "Running for %d cycles..." % running_count
-        if running_count > 15:
-            ser.write('\x04')  # end cycle
+        if running_count > max_cycle:
+            if device == "irrigation":
+                ser.write('\x04')  # end cycle
+            elif device == "lighting":
+                ser.write('\x07')  # lighting off
             print "Ending cycle..."
             return 0
         else:

@@ -6,4 +6,7 @@ Index       R/W         Description
 2           R           Solenoid state
 3           W           Solenoid ON
 4           W           Solenoid OFF
+5	    R		LED state
+6           W		LED ON
+7	    W		LED OFF
 
